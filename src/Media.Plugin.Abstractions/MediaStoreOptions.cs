@@ -48,6 +48,25 @@ namespace Plugin.Media.Abstractions
         Front
     }
 
+	/// <summary>
+	/// Camera flash mode
+	/// </summary>
+	public enum CameraFlash
+	{
+		/// <summary>
+		/// Default platform behavior
+		/// </summary>
+		Default,
+		/// <summary>
+		/// On
+		/// </summary>
+		On,
+		/// <summary>
+		/// Off
+		/// </summary>
+		Off
+	}
+
     /// <summary>
     /// 
     /// </summary>
@@ -144,6 +163,12 @@ namespace Plugin.Media.Abstractions
             get;
             set;
         }
+
+	    /// <summary>
+	    /// Default flash
+	    /// Setting to define which mode the flash is preset to when opening the camera preview
+	    /// </summary>
+	    public CameraFlash CameraFlash { get; set; }
 
         /// <summary>
         /// Gets or sets the the max width or height of the image.

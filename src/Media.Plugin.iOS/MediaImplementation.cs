@@ -208,6 +208,7 @@ namespace Plugin.Media
             {
                 picker.CameraDevice = GetUICameraDevice(options.DefaultCamera);
                 picker.AllowsEditing = options?.AllowCropping ?? false;
+	            picker.CameraFlashMode = GetCameraFlashMode(options.CameraFlash);
 
                 if (options.OverlayViewProvider != null)
                 {
@@ -294,7 +295,20 @@ namespace Plugin.Media
             }).Unwrap();
         }
 
-        private static UIImagePickerControllerCameraDevice GetUICameraDevice(CameraDevice device)
+	    private static UIImagePickerControllerCameraFlashMode GetCameraFlashMode(CameraFlash mode)
+	    {
+		    switch (mode)
+		    {
+			    case CameraFlash.On:
+				    return UIImagePickerControllerCameraFlashMode.On;
+			    case CameraFlash.Off:
+				    return UIImagePickerControllerCameraFlashMode.Off;
+				default:
+					return UIImagePickerControllerCameraFlashMode.Auto;
+			}
+	    }
+
+		private static UIImagePickerControllerCameraDevice GetUICameraDevice(CameraDevice device)
         {
             switch (device)
             {
